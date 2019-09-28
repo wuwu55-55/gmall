@@ -29,7 +29,6 @@ import java.lang.reflect.Method;
 import java.util.Date;
 
 
-
 /**
  * 系统日志，切面处理类
  *
@@ -40,10 +39,10 @@ import java.util.Date;
 public class SysLogAspect {
 	@Autowired
 	private SysLogService sysLogService;
-
+	
 	@Pointcut("@annotation(com.atguigu.common.annotation.SysLog)")
-	public void logPointCut() {
-
+	public void logPointCut() { 
+		
 	}
 
 	@Around("logPointCut()")
