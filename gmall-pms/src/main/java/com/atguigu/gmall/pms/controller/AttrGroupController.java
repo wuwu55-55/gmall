@@ -13,8 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
-
-
+import java.util.List;
 
 
 /**
@@ -30,6 +29,14 @@ import java.util.Arrays;
 public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
+
+    @ApiOperation("根据三级分组id查询分组及组下的规格参数")
+    @GetMapping("withattr/cat/{catId}")
+    public Resp<List<AttrGroupVO>> queryByCid(@PathVariable("catId") Long cid) {
+        List<AttrGroupVO> attrGroupVOS = this.attrGroupService.queryByCid(cid);
+        return Resp.ok(attrGroupVOS);
+    }
+
 
     @ApiOperation("根据分组id查询分组及组下的规格参数")
     @GetMapping("withattr/{gid}")
